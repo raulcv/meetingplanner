@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace meetingplanner.meetingplanner.app.Data
+namespace meetingplanner.app.Data
 {
     public class AppDbContext : DbContext
     {

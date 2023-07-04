@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace meetingplanner.meetingplanner.app.Data
+namespace meetingplanner.app.Data
 {
     public class Speaker
     {
