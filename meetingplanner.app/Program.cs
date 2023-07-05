@@ -14,11 +14,11 @@ var app = builder.Build();
 
 app.UseRouting();
 
-app.UseEndpoints(endpoints =>
-{
-  endpoints.MapGraphQL();
-});
-
+// app.UseEndpoints(endpoints =>
+// {
+//   endpoints.MapGraphQL();
+// });
+app.MapGraphQL();
 app.MapGet("/", () => "Hello World!");
 
 app.Run();
