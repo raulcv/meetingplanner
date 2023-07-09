@@ -2,6 +2,7 @@ using meetingplanner.app.Queries;
 using meetingplanner.app.Data;
 using Microsoft.EntityFrameworkCore;
 using meetingplanner.app.Mutations;
+using meetingplanner.app.DataLoader;
 
 var builder = WebApplication.CreateBuilder(args);
 // var services = builder.Services;
@@ -11,7 +12,8 @@ builder.Services.AddPooledDbContextFactory<AppDbContext>(option => option.UseSql
 builder.Services
   // .RegisterDbContext<AppContext>(DbContextKind.Pooled)
   .AddGraphQLServer().AddQueryType<Query>()
-  .AddGraphQLServer().AddMutationType<Mutation>();
+  .AddGraphQLServer().AddMutationType<Mutation>()
+  .AddDataLoader<SpeakerByIdDataLoader>();
 
 var app = builder.Build();
 
