@@ -27,7 +27,9 @@ namespace meetingplanner.app.Mutations
     */
     #endregion
     [UseApplicationDbContext]
-    public async Task<SpeakerOutput> AddSpeakerAsync(SpeakerInput input, [Service(ServiceKind.Pooled)] AppDbContext context)
+    public async Task<SpeakerOutput> AddSpeakerAsync(
+      SpeakerInput input,
+      [ScopedService] AppDbContext context)
     {
       var speaker = new Speaker
       {

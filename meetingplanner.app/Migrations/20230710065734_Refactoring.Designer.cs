@@ -11,7 +11,7 @@ using meetingplanner.app.Data;
 namespace meetingplanner.app.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230709130726_Refactoring")]
+    [Migration("20230710065734_Refactoring")]
     partial class Refactoring
     {
         /// <inheritdoc />
