@@ -19,7 +19,7 @@ dotnet restore
 
 Finally RUN
  ```
- dotnet run --project meetingplanner.app.csproj
+ dotnet run --project meetingplanner.app
  ```
 ------------------------------------------------------------------------
 <p align="center">
