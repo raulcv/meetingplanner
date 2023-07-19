@@ -10,6 +10,11 @@ namespace meetingplanner.app.Types
     protected override void Configure(IObjectTypeDescriptor<Speaker> descriptor)
     {
       descriptor
+        .ImplementsNode()
+        .IdField(t=>t.Id)
+        .ResolveNode((cxt, id)=> cxt.DataLoader<SpeakerByIdDataLoader>().LoadAsync(id, cxt.RequestAborted));
+
+      descriptor
         .Field(t => t.SessionSpeakers)
         .ResolveWith<SpeakerResolvers>(t => t.GetSessionsAsync(default!, default!, default!, default))
         .UseDbContext<AppDbContext>()
@@ -18,7 +23,8 @@ namespace meetingplanner.app.Types
     private class SpeakerResolvers
     {
       public async Task<IEnumerable<Session>> GetSessionsAsync(
-         Speaker speaker, [ScopedService] AppDbContext dbContext,
+         Speaker speaker, 
+         [ScopedService] AppDbContext dbContext,
          SessionByIdDataLoader sessionById,
          CancellationToken cancellationToken)
       {

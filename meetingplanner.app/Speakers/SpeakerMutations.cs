@@ -4,9 +4,10 @@ using meetingplanner.app.Data;
 using meetingplanner.app.Domain;
 using meetingplanner.app.Extensions;
 
-namespace meetingplanner.app.Mutations
+namespace meetingplanner.app.Speakers
 {
-  public class Mutation
+  [ExtendObjectType("Mutation")]
+  public class SpeakerMutations
   {
     #region Old one to make Mutation query
     /*
@@ -27,8 +28,8 @@ namespace meetingplanner.app.Mutations
     */
     #endregion
     [UseApplicationDbContext]
-    public async Task<SpeakerOutput> AddSpeakerAsync(
-      SpeakerInput input,
+    public async Task<AddSpeakerPayload> AddSpeakerAsync(
+      AddSpeakerInput input,
       [ScopedService] AppDbContext context)
     {
       var speaker = new Speaker
@@ -41,7 +42,7 @@ namespace meetingplanner.app.Mutations
       context.Speakers.Add(speaker);
       await context.SaveChangesAsync();
 
-      return new SpeakerOutput(speaker);
+      return new AddSpeakerPayload(speaker);
     }
   }
 }

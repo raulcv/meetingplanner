@@ -1,6 +1,6 @@
 namespace meetingplanner.app.Domain
 {
-  public record SpeakerInput(
+  public record AddSpeakerInput(
       string Name,
       string? Bio,
       string? WebSite);

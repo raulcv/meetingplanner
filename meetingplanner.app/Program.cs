@@ -1,9 +1,10 @@
 using meetingplanner.app.Queries;
 using meetingplanner.app.Data;
 using Microsoft.EntityFrameworkCore;
-using meetingplanner.app.Mutations;
+// using meetingplanner.app.Mutations;
 using meetingplanner.app.DataLoader;
 using meetingplanner.app.Types;
+using meetingplanner.app.Speakers;
 
 var builder = WebApplication.CreateBuilder(args);
 // var services = builder.Services;
@@ -14,8 +15,10 @@ builder.Services
   // .RegisterDbContext<AppContext>(DbContextKind.Pooled)
   .AddGraphQLServer()
   .AddQueryType<Query>()
-  .AddMutationType<Mutation>()
+  .AddMutationType(m => m.Name("Mutation"))
+    .AddTypeExtension<SpeakerMutations>()
   .AddType<SpeakerType>()
+  .EnableRelaySupport()
   .AddDataLoader<SpeakerByIdDataLoader>()
   .AddDataLoader<SessionByIdDataLoader>();
 
