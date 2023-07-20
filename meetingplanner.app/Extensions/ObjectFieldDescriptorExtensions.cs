@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using HotChocolate.Types;
 
-namespace meetingplanner.app.Extensions
+namespace meetingplanner.app
 {
   public static class ObjectFieldDescriptorExtensions
   {

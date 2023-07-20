@@ -1,6 +1,5 @@
 using meetingplanner.app.Data;
 using meetingplanner.app.DataLoader;
-using meetingplanner.app.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace meetingplanner.app.Types
@@ -11,8 +10,9 @@ namespace meetingplanner.app.Types
     {
       descriptor
         .ImplementsNode()
-        .IdField(t=>t.Id)
-        .ResolveNode((cxt, id)=> cxt.DataLoader<SpeakerByIdDataLoader>().LoadAsync(id, cxt.RequestAborted));
+        .IdField(t => t.Id)
+        .ResolveNode((cxt, id) => cxt.DataLoader<SpeakerByIdDataLoader>().LoadAsync(id, cxt.RequestAborted));
+      descriptor.Field(t => t.Id).ID("FOO");
 
       descriptor
         .Field(t => t.SessionSpeakers)
@@ -23,7 +23,7 @@ namespace meetingplanner.app.Types
     private class SpeakerResolvers
     {
       public async Task<IEnumerable<Session>> GetSessionsAsync(
-         Speaker speaker, 
+         Speaker speaker,
          [ScopedService] AppDbContext dbContext,
          SessionByIdDataLoader sessionById,
          CancellationToken cancellationToken)

@@ -10,7 +10,8 @@ namespace meetingplanner.app.Speakers
     {
       Speaker = speaker;
     }
-    protected SpeakerPayloadBase(IReadOnlyList<UserError> errors) : base(errors)
+    protected SpeakerPayloadBase(IReadOnlyList<UserError> errors)
+      : base(errors)
     {
     }
     public Speaker? Speaker { get; }

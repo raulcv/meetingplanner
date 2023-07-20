@@ -2,22 +2,26 @@ using System.Linq;
 using HotChocolate;
 using meetingplanner.app.Data;
 using meetingplanner.app.DataLoader;
-using meetingplanner.app.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace meetingplanner.app.Queries
+namespace meetingplanner.app.Speakers
 {
-  public class Query
+  [ExtendObjectType("Query")]
+  public class SpeakerQueries
   {
     // public IQueryable<Speaker> GetSpeakers([Service] AppDbContext context) => context.Speakers; The OLD type
     [UseApplicationDbContext]
-    public Task<List<Speaker>> GetSpeakers([ScopedService] AppDbContext context) =>
+    public Task<List<Speaker>> GetSpeakersAsync([ScopedService] AppDbContext context) =>
       context.Speakers.ToListAsync();
-    public Task<Speaker> GetSpeakerAsync(
+    public Task<Speaker> GetSpeakerByIdAsync(
       [ID(nameof(Speaker))] int id,
       SpeakerByIdDataLoader dataLoader,
       CancellationToken cancellationToken) => dataLoader.LoadAsync(id, cancellationToken);
-
+    public async Task<IEnumerable<Speaker>> GetSpeakersByIdAsync(
+        [ID(nameof(Speaker))] int[] ids,
+        SpeakerByIdDataLoader dataLoader,
+        CancellationToken cancellationToken) =>
+        await dataLoader.LoadAsync(ids, cancellationToken);
 
     public List<Speaker> GetSpeakersTest()
     {

@@ -3,7 +3,7 @@ using meetingplanner.app.Data;
 using HotChocolate.Types;
 using HotChocolate.Types.Descriptors;
 
-namespace meetingplanner.app.Extensions
+namespace meetingplanner.app
 {
   public class UseApplicationDbContextAttribute : ObjectFieldDescriptorAttribute
   {

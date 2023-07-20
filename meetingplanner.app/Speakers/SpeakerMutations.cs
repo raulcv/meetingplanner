@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using HotChocolate;
 using meetingplanner.app.Data;
 using meetingplanner.app.Domain;
-using meetingplanner.app.Extensions;
 
 namespace meetingplanner.app.Speakers
 {
