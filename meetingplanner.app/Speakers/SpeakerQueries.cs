@@ -20,8 +20,7 @@ namespace meetingplanner.app.Speakers
     public async Task<IEnumerable<Speaker>> GetSpeakersByIdAsync(
         [ID(nameof(Speaker))] int[] ids,
         SpeakerByIdDataLoader dataLoader,
-        CancellationToken cancellationToken) =>
-        await dataLoader.LoadAsync(ids, cancellationToken);
+        CancellationToken cancellationToken) => await dataLoader.LoadAsync(ids, cancellationToken);
 
     public List<Speaker> GetSpeakersTest()
     {

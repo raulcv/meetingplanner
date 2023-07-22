@@ -12,7 +12,7 @@ namespace meetingplanner.app.Types
         .ImplementsNode()
         .IdField(t => t.Id)
         .ResolveNode((cxt, id) => cxt.DataLoader<SpeakerByIdDataLoader>().LoadAsync(id, cxt.RequestAborted));
-      descriptor.Field(t => t.Id).ID("FOO");
+      // descriptor.Field(t => t.Id).ID("FOO");
 
       descriptor
         .Field(t => t.SessionSpeakers)
